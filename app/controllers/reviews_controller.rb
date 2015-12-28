@@ -10,8 +10,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to place_path(@review.place), notice: 'Review was successfully created.' }
-        
+        format.html { redirect_to place_path(@review.place) , notice: 'Review was successfully created.' }
       else
         format.html { render :new }
         
@@ -25,7 +24,6 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.update(place_params)
         format.html { redirect_to place_path(@review.place), notice: 'Review was successfully updated.' }
-        
       else
         format.html { render :edit }
         
@@ -43,10 +41,10 @@ class ReviewsController < ApplicationController
     end
   end
 
-  private
+  private 
 
   def set_review
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:id])  
   end
 
   def review_params

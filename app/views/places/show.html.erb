@@ -36,7 +36,7 @@
 
   var map;
   var myCenter = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
-  
+
   function initMap() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: myCenter,
@@ -47,4 +47,15 @@
       map: map, 
     });
   }
+
+  <% @reviews.each do |review| %>
+      $(".score_<%= review.id %> ").raty({
+      starOn: "<%= image_path('star-on.png') %>",
+      starOff: "<%= image_path('star-off.png') %>",
+      score: '<%= review.score %>',
+      readOnly: true
+      
+    });
+  <% end %>
+
 </script>
